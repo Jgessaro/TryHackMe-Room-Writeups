@@ -1,0 +1,67 @@
+Osquery Room WriteUp
+
+Task 3
+
+A1: 3
+Explanation: in PS type osqueryi to open osquery command line. Type .table process. The output is number of tables.
+
+A2: pid
+Explanantion: pid stands for "process ID", you can use, select pid, name from processes; to output all PIDs and names from the processes table.
+
+A3: 5
+Explanation: type .help and look at the .mode command option. Then count the options under .mode
+
+
+Task 4
+
+A1: 56
+Explanation: on the documentation link, select Linux and Win OS from the dropbox. At the top left it will display the amount of common tables.
+
+A2: 180
+Explanation: Same thing as before, but make sure to de-select Linux and Window OS and only Mac OS is selected.
+
+A3: Programs
+Explanation: Looking at the tables list for Windows OS, programs shows a table for products installed by windows installer
+
+A4: data 
+Explanation: Select the "registry" table from the tables list. Look under "column" for "data", read its description. 
+
+
+Task 5
+
+A1: 19
+Explanation: In osqueryi, type: select count (*) from programs; to display all installed programs on the VM.
+
+A2: Creative Artist
+Explanation: In osqueryi, type: select description from users where username="James"; to display James' description
+
+A3: s-1-5-21-1966530601-3185510712-10604624-1009
+Explanation: type the provided command in osqueryi. Looking at the last 4 numbers in the "path" column, look for "1009" ONLY (not 1009_classes, although they're the same SID). I have the answer so you can just copy and paste and not have to type all that. :)
+
+A4: C:\windows\system32\ieframe.dll
+Explanation: This is not asking you for the "what" but for the path of where the IE extension is located. Again you can copy and paste from here. :) 
+
+A5: wireshark 3.6.8 64-bit
+Explanation: This one is asking for the value in the "name" column. 
+
+
+Task 6
+
+A1: Userassist
+Explanation: Looking on the Osqueryi Documentation, and only looking at Windows OS tables, userassist does "UserAssist Registry Key tracks when a user executes an application from Windows Explorer."
+
+A2: diskwipe.exe
+Explanation: Typing: select * from userassist; reveals all the executed processes on the system. Looking down the "path" column, I looked at all paths that ended in *.exe. That is when I found the program diskwipe.exe. 
+
+A3: ProtonVPN
+Explanation: From looking in the Path column from the previous question, I saw ProtonVPN was a program and executable before I saw diskwipe.exe. So, I knew this would be the answer to this question. However, that is not the intended way to solve this question. As such, you can type: select name from programs where name like "%vpn%"; and find a list of the VPN programs. 
+
+A4: 214
+Explanation: If you recall from a previous task, we used the count() function to figure out how many programs are installed on the VM. I used this function again so the command looks like: select count(*) from services;.
+
+A5: batstartup.bat
+Explanation: Using a previous technique, I typed: select name from autoexec where name like '%.bat';
+It may take some time to run, but it will output the correct program. 
+
+A6: c:\users\james\appdata\roaming\microsoft\windows\start menu\programs\startup\batstartup.bat
+Explanation: Now that we know the name of the program, we can create our search criteria. Type: select path from autoexec where name="batstartup.bat"; It will display 2 paths, as the question points out, we want the last path listed. 
