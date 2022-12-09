@@ -1,0 +1,31 @@
+Splunk: Basics Room by TryHackMe & Dex01
+
+
+Task 3
+
+A1: Forwarder
+Explanation: Reading the above information of the 3 main components of Splunk, the Forwarder is responsible for sending data to the Splunk instance. 
+
+
+Task 4
+
+A1: Monitor
+Explanation: On the Splunk homepage, click on "Add Data", wait for it to load. On the bottom, there are 3 green icons. The middle one, "Monitor", collects data from files and ports.
+
+
+Task 5
+
+A1: 2862
+Explanation: Once VPN_Logs.json file has been uploaded to Splunk, it should bring you to a new page. There is a search bar on top with various search fields pre-generated. Look to the left and directly under the search bar; there is a total of 2,862 events in the file.
+
+A2: 60
+Explanation: In the search bar, type maleena, and look where you found the total events from precious question.
+
+A3: Smith
+Explanation: In the search bar, remove maleena. Enter 107.14.182.38 and search. Looking down the page at the first event is where to find the answer. Look at the field "UserName:" below "Source_ip". 
+
+A4: 2814
+Explanation: In the search bar remove the previous IP address, and then type NOT france and search. Look at the total events. 
+
+A5: 14
+Explanation: Remove previous search and type 107.3.206.58 and VPN, look at total events.
